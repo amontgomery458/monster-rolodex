@@ -1,5 +1,6 @@
 import { Component } from 'react';
 
+import CardList from './components/card-list/card-list.component';
 import logo from './logo.svg';
 import './App.css';
 
@@ -37,7 +38,7 @@ onSearchChange = (event) => {
 
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
-    
+
     const filteredMonsters = monsters.filter((monster) => {
       return monster.name.toLocaleLowerCase().includes(searchField);
     });
@@ -50,13 +51,8 @@ onSearchChange = (event) => {
         placeholder='search monsters' 
         onChange={onSearchChange} 
         />
-       {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}> 
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
+       {}
+        <CardList monsters={filteredMonsters} />
     </div>
     )}  
 }
